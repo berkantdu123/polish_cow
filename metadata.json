@@ -13,7 +13,8 @@
         "License": "GPL3",
         "Name": "Maxwell",
         "BugReportUrl": "https://github.com/wilversings/maxwell/issues",
-        "Website": "https://github.com/wilversings/maxwell"
+        "Website": "https://github.com/wilversings/maxwell",
+        "Version": "0.9.0"
     },
-    "X-Plasma-API": "declarativeappletscript"
+    "X-Plasma-API-Minimum-Version": "6.0"
 }

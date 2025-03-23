@@ -10,14 +10,14 @@ Kirigami.FormLayout {
 
     property alias cfg_speed: speed.value
     property alias cfg_mirror: mirror.checked
-    property alias cfg_highRenderQuality: highRenderQuality.checked
+    property alias cfg_hq: hq.checked
 
     Slider {
-        Layout.preferredWidth: 10 * Kirigami.Units.gridUnit
+        Layout.preferredWidth: 15 * Kirigami.Units.gridUnit
         id: speed
         from: 0.6
         to: 10
-        stepSize: 0.5
+        stepSize: 0.4
         Kirigami.FormData.label: i18n("Speed")
     }
 
@@ -27,7 +27,7 @@ Kirigami.FormLayout {
     }
 
     CheckBox {
-        id: highRenderQuality
+        id: hq
         Kirigami.FormData.label: i18n("High render quality")
     }
 }
