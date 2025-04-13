@@ -6,26 +6,61 @@
 
 import QtQuick
 import QtQuick.Layouts
+import QtMultimedia
 import org.kde.plasma.plasmoid
 import org.kde.plasma.core as PlasmaCore
 import org.kde.kirigami as Kirigami
 import org.kde.kquickcontrolsaddons
+import QtQuick.Controls
 
 PlasmoidItem {
-    id: mainWindow
+    id: widget
 
+    Plasmoid.status: PlasmaCore.Types.HiddenStatus
     Plasmoid.backgroundHints: PlasmaCore.Types.NoBackground
+
+    SoundEffect {
+        id: themeSong
+        source: plasmoid.configuration.playthemesong != "Never" ? "stockmarket.wav" : ""
+        loops: plasmoid.configuration.themesongloops
+        muted: plasmoid.configuration.playthemesong == "Never"
+
+        onMutedChanged: {
+            if(muted) stop()
+        }
+    }
 
     AnimatedImage {
         id: animation
         source: "maxwell-spinning.gif"
-        width: mainWindow.width
+        width: widget.width
         fillMode: Image.PreserveAspectFit
         mirror: plasmoid.configuration.mirror
-        // height: mainWindow.height
+        height: widget.height
         speed: plasmoid.configuration.speed
         mipmap: plasmoid.configuration.hq
+
+        MouseArea {
+            anchors.fill: parent
+
+            function toggleThemeSong(config) {
+                if (plasmoid.configuration.playthemesong != config) {
+                    return
+                }
+
+                if (themeSong.playing) {
+                    themeSong.stop()
+                }
+                else {
+                    themeSong.play()
+                }
+            }
+
+            onClicked: toggleThemeSong("On Click")
+            onDoubleClicked: toggleThemeSong("On Double Click")
+        }
     }
+    
 }
 
 

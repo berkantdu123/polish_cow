@@ -1,1 +1,3 @@
-# Maxwell the carryable cat, now as a KDE Plasma Widget
+# Maxwell 
+
+Maxwell the carryable cat, now as a KDE Plasma Widget
