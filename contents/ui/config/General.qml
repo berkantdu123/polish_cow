@@ -81,7 +81,7 @@ Kirigami.FormLayout {
                 sourceComponent: FileDialog {
                     id: fileDialog
                     nameFilters: [
-                        i18n("image/gif (%1)", "*.gif"),
+                        i18n("GIF", "*.gif"),
                         i18n("All files (%1)", "*"),
                     ]
                     onAccepted: {
