@@ -1,6 +1,7 @@
 import QtQuick
 import QtQuick.Controls
 import QtQuick.Layouts
+import QtQuick.Dialogs
 import org.kde.kirigami as Kirigami
 import org.kde.kcmutils as KCM
 import QtQuick.Dialogs as QtDialogs
@@ -13,6 +14,8 @@ Kirigami.FormLayout {
     property alias cfg_hq: hq.checked
     property var cfg_playthemesong
     property alias cfg_themesongloops: themesongloops.value
+    property alias cfg_gifpath: gifpath.text
+    property var cfg_gifpathDefault
 
     Slider {
         id: speed
@@ -58,4 +61,45 @@ Kirigami.FormLayout {
 
         Kirigami.FormData.label: i18n("Theme song loops")
     }
+
+    RowLayout {
+        Kirigami.FormData.label: i18n("Path to GIF:")
+
+        TextField {
+            id: gifpath
+            placeholderText: i18n("No file selected.")
+        }
+        Button {
+            text: i18n("Browse")
+            icon.name: "folder-symbolic"
+            onClicked: fileDialogLoader.active = true
+
+            Loader {
+                id: fileDialogLoader
+                active: false
+
+                sourceComponent: FileDialog {
+                    id: fileDialog
+                    nameFilters: [
+                        i18n("image/gif (%1)", "*.gif"),
+                        i18n("All files (%1)", "*"),
+                    ]
+                    onAccepted: {
+                        gifpath.text = fileDialog.selectedFile
+                        fileDialogLoader.active = false
+                    }
+                    onRejected: {
+                        fileDialogLoader.active = false
+                    }
+                    Component.onCompleted: open()
+                }
+            }
+        }
+        Button {
+            text: i18n("Reset default")
+            icon.name: "edit-reset"
+            onClicked: gifpath.text = cfg_gifpathDefault
+        }
+    }
+
 }

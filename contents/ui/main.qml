@@ -32,7 +32,7 @@ PlasmoidItem {
 
     AnimatedImage {
         id: animation
-        source: "maxwell-spinning.gif"
+        source: plasmoid.configuration.gifpath
         width: widget.width
         fillMode: Image.PreserveAspectFit
         mirror: plasmoid.configuration.mirror

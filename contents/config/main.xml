@@ -18,5 +18,8 @@
         <entry name="themesongloops" type="Int">
             <default>1</default>
         </entry>
+        <entry name="gifpath" type="Path">
+            <default>maxwell-spinning.gif</default>
+        </entry>
     </group>
 </kcfg>
