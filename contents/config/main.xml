@@ -19,7 +19,7 @@
             <default>1</default>
         </entry>
         <entry name="gifpath" type="Path">
-            <default>maxwell-spinning.gif</default>
+            <default>polish-cow-dancing-cow.gif</default>
         </entry>
     </group>
 </kcfg>
